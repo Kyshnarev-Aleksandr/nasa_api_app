@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ public class PhotoListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.list);
+
+
 
         adapter = new Adapter();
 
@@ -106,11 +109,13 @@ public class PhotoListActivity extends AppCompatActivity {
     private static class PhotoItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView text;
+        ImageView photo_photo;
         PhotoDTO photo;
 
         public PhotoItemViewHolder(@NonNull View itemView) {
             super(itemView);
             text = (TextView) itemView.findViewById(R.id.text);
+            photo_photo = itemView.findViewById(R.id.photo_photo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -122,6 +127,7 @@ public class PhotoListActivity extends AppCompatActivity {
 
         public void bind(PhotoDTO photo) {
             text.setText(photo.getDate());
+
             this.photo = photo;
         }
     }
